@@ -6,8 +6,7 @@ from time import sleep
 #1;    --- This implies that the text should be bold.
 #32;   --- This implies that the text should be green.
 #40m   --- This implies that the background should be black.
-print("\033[1;32;40m\
-Bold (1) green (32) TEXT ON A BLACK BACKGROUND(x)" +"\n")
+#Bold (1) green (32) TEXT ON A BLACK BACKGROUND(x)" +"\n")
  
  
 sleep(2)
@@ -18,8 +17,9 @@ sleep(2)
 #4;  --- This implies that the text should be underlined and normal.
 #36; --- This implies that the text should be cyan.
 #40m --- This implies that the background should be black.
-print("\033[0;37;44m\
-Normal, underlined (4) cyan text (37) on a black background (40)")
+print("\033[0;37;44m")
+
+print("Normal, underlined (4) cyan text (37) on a black background (40)")
 
 sleep(2)
 
