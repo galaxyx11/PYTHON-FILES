@@ -1,0 +1,15 @@
+# resistor power calculator
+ Written so i could calculate power to leds etc when using
+raspberry pi gpio inputs at 5volt/3.3 volt
+
+takes the input power ie 5 volt minus the led forward power
+and divides by the constant 0.02. output is rounded to nearest
+whole number in ohms for approximate resistor use.
+
+      5 volt            -                 2  volt             /     0.02
+main power      minus       led power        divide by
+
+resistor = (5-2)/0.02  = approx 150 ohms
+
+hope you find this useful
+galaxyx
