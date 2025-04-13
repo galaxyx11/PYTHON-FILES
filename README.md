@@ -7,6 +7,10 @@ tedsdash mini dashboard program time/date/disk/ip/uptime etc all on one dashboar
 
 resistor useful for finding the resistor needed for leds on 5v/3.3v leds
 
+sensehat various progs for raspi sense hat temp/humidity/4x4 font set etc
+
+plus various odd code I found interesting and useful
+
 getting there hope you find this useful
 
 Galaxyx
