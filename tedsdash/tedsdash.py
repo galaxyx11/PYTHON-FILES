@@ -6,12 +6,16 @@ import socket
 import time
 from time import sleep
 from datetime import datetime
-print("\033[1;37;40m")
+
 
 def myclear():
+	print("\033[1;37;40m")
 	for i in range (1,30):
 		print("\n")
 	print("\033[H")
+
+
+myclear() # clear initial screen and cursor to 0,0
 
 def getip(): # Get host name and ip address
 	testIP = "8.8.8.8"
@@ -55,14 +59,8 @@ def getRAMinfo():
 def getCPUuse():
     return(str(os.popen("top -n1 | awk '/Cpu\(s\):/ {print $2}'").readline().strip(\
 )))
-
-# Return information about disk space as a list (unit included)                     
-# Index 0: total disk space                                                         
-# Index 1: used disk space                                                          
-# Index 2: remaining disk space                                                     
-# Index 3: percentage of disk used                                                  
-                        
-
+                                                 
+                       
 def getram(): # RAM information
 	# Output is in kb, here I convert it in Mb for readability
 	RAM_stats = getRAMinfo()
@@ -70,8 +68,29 @@ def getram(): # RAM information
 	RAM_used = round(int(RAM_stats[1]) / 1000,1)
 	RAM_free = round(int(RAM_stats[2]) / 1000,1)
 	print(" Ram Total is      " ,RAM_total, "MBytes")
-	print(" Ram Used is        " ,RAM_used, "MBytes")
+	print(" Ram Used is       " ,RAM_used, "MBytes")
 	print(" Ram Free is       " ,RAM_free, "MBytes","\n")
+	
+	
+def getDfDescription():
+    df = os.popen("df -h /")
+    i = 0
+    while True:
+        i = i + 1
+        line = df.readline()
+        if i==1:
+            return(line.split()[0:6])
+                                 
+def getDf():
+    df = os.popen("df -h /")
+    i = 0
+    while True:
+        i = i + 1
+        line = df.readline()
+        if i==2:
+            return(line.split()[0:6])
+
+
 	
 def uptime():
 	#return time.time() - psutil.boot_time()
@@ -79,6 +98,7 @@ def uptime():
 	print("\n","System  ","\033[1;37;43m",t,"\033[1;37;40m")
 
 while True:
+	myclear()
 	getip()
 	getdate()
 	gettime()
@@ -88,5 +108,17 @@ while True:
 	print(" CPU Temp  is        ","\033[1;37;42m",CPU_temp,"\033[1;37;40m", "Deg")
 	print(" CPU Usage is       ",CPU_usage, "Percent")
 	uptime()
+	
+	# Get Disk information
+	print("\n","\n", "          \033[1;37;45m"," Disk Information","\033[1;37;40m", "\n")
+	description = getDfDescription()
+	disk_root = getDf()
+	#print(disk_root)
+	#print(description[0] + " : " + disk_root[0])
+	print("    " + description[5] + " : " + disk_root[5])
+	print("    " + description[1] + " : " + disk_root[1])
+	print("    " + description[2] + " : " + disk_root[2])
+	print("    " + description[3] + " : " + disk_root[3])
+	print("    " + description[4] + " : " + disk_root[4])
+	
 	sleep(10)
-	myclear()
