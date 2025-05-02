@@ -1,0 +1,2 @@
+python3 -m venv my_project --system-site-packages
+source my_project/bin/activate
