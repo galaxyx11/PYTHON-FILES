@@ -6,8 +6,8 @@ from datetime import datetime
 import os
 
 # setup gpio pins
-pir = MotionSensor(17)
-buzzer = Buzzer(22)
+pir = MotionSensor(25)
+buzzer = Buzzer(17)
 red = LED(18)
 blue = LED(24)
 
@@ -65,11 +65,11 @@ while True:
         
 	# Echo log file data to screen
 	mypicfile = open("pirlog.txt", "r")
-	picdata = mypicfile.read()  
+	picdata = mypicfile.read()
+	#print(picdata)   
 	mypicfile.close()
 	print("       ",line_count,"LINES IN LOG FILE") 
 	print(" SIZE OF LOG FILE IS --- " , os.path.getsize("pirlog.txt"),"Bytes\n")
 	print(redb,"    WARNING MOTION DETECTED       ",whitblac,whitblac,"\n")
 	sleep(8)
-	
 
